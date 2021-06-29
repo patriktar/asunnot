@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf.8"/>
+
+</head>
+
+<body>
+    <form> 
+        <div class="Laatikko"></div>
+            <label for="kohde">Kohde</label>
+            <br>
+            <input type="text" id="kohde" placeholder="Kohde">
+        </div>
+
+        <div class="Laatikko"></div>
+            <label for="osoite">Osoite</label>
+            <br>
+            <input type="text" id="osoite" placeholder="Osoite">
+        </div>
+
+        <div class="Laatikko"></div>
+            <label for="hinta">Hinta</label>
+            <br>
+            <input type="number" id="hinta" placeholder="Hinta">
+        </div>
+
+        <div class="Laatikko"></div>
+            <label for="ala">Pinta-ala</label>
+            <br>
+            <input type="number" id="ala" placeholder="Ala">
+
+        <div>
+            <div class="Laatikko">
+                <button id="nappi">Lisää asunto/kohde</button>
+        </div>
+        <div class="Laatikko">
+            <button id="nappi">Etsi asunto</button>             //search asunto
+
+            
+            <button id="nappi">Laske pinta-ala</button>         //count pinta-ala + hinta
+    </div>
+        
+
+        <div id="msg">
+            <pre></pre>
+        </div>
+        </div>
+        </div>
+
+    
+    <script>
+        let asunnot = [];               //array asunnot
+
+        const lisaaAsunto = (ev)=> {    //add asunto
+            ev.preventDefault();
+            let asunto = {
+                kohde: document.getElementById("kohde").value,
+                osoite: document.getElementById("osoite").value,
+                hinta: document.getElementById("hinta").value,
+                ala: document.getElementById("ala").value
+            }
+            asunnot.push(asunto);
+            document.forms[0].reset();
+
+                document.getElementByID("nappi").addEventListener("lisaa", lisaaAsunto);
+
+           console.warn("lisatty" , {asunnot} );
+           let pre = document.querySelector("#msg pre");
+           pre.textContent = "\n" + JSON.stringify(asunnot, "\t", 2);
+
+       
+
+        }
+        
+    </script>
+
+
+    </form>
+</body>
